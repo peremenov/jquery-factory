@@ -1,0 +1,28 @@
+{
+  "name": "jquery-factory",
+  "version": "0.0.1",
+  "homepage": "https://github.com/peremenov/jquery-factory",
+  "description": "Super simple and solid factory for jQuery plugins",
+  "main": "newPlugin.jquery.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "factory",
+    "new",
+    "plugin"
+  ],
+  "authors": [
+    "Kir Peremenov <kirill@peremenov.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
