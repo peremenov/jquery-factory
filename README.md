@@ -10,7 +10,3 @@ Super simple, lightweight and solid factory for jQuery plugins. It allows to fol
 - Around 600 bytes weight compressed
 - Efficient code re-usage when writing many plugins
 - Test mode available
-
-### Known bugs
-
-- 
