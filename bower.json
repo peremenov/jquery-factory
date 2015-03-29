@@ -24,5 +24,8 @@
   ],
   "dependencies": {
     "jquery": ">=1.6"
+  },
+  "devDependencies": {
+    "qunit": "~1.17.1"
   }
 }

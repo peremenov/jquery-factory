@@ -29,8 +29,13 @@
      * @return {jQuery}  returns jQuery object
      */
     $.fn[__pluginName] = function() {
-      var args = $.map(arguments, function(arg) { return arg; })
-        , opt  = args[0]
+      var args = [];
+      /**
+       * Using $.each because $.map function flatten arrays
+       */
+      $.each(arguments, function(index, arg) { args.push(arg); });
+
+      var opt  = args[0]
         , params = args.slice(1)
       ;
 
