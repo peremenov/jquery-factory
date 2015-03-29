@@ -1,4 +1,4 @@
-(function($, window) {
+(function($, window, undefined) {
   $.newPlugin = function(__pluginName, Obj, cb) {
     var Obj = Obj || function() {}
       /**
@@ -37,6 +37,7 @@
       return this.each(function() {
         var $self = $(this)
           , obj = $self.data(__pluginName)
+          , oldData
         ;
 
         if(obj instanceof Obj) {
@@ -45,8 +46,17 @@
           else
             obj.update.apply(obj, args);
         } else {
-          if( opt != 'destroy') {
-            obj = new Obj($self, opt);
+          /**
+           * Don't init new plugin if calling destroy method
+           */
+          if(opt != 'destroy') {
+            /**
+             * Data contains in element data-<__pluginName>
+             */
+            if(obj !== undefined)
+              oldData = obj;
+
+            obj = new Obj($self, opt, oldData);
             cb.call(obj) && $self.data(__pluginName, obj);
           }
         }

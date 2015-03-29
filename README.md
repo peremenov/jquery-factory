@@ -1,36 +1,13 @@
 # jQuery Factory
 
-Super simple and solid factory for jQuery plugins. It allows to follow classic JavaScript patterns instead of  [jQuery's](https://learn.jquery.com/plugins/basic-plugin-creation/).
+Super simple, lightweight and solid factory for jQuery plugins. It allows to follow classic JavaScript patterns instead of  [jQuery's](https://learn.jquery.com/plugins/basic-plugin-creation/).
 
-Example of plugin:
+### Features
 
-```javascript
+- All modern browsers support (including mobile browsers)
+- Support Internet Explorer 6-11
+- Support jQuery version from 1.6
+- Around 600 bytes weight compressed
+- Efficient code re-usage when writing many plugins
+- Test mode available
 
-(function($) {
-  var __pluginName = 'newPluginName';
-
-  var Obj = function($el, opt) {
-    this.$el = $el;
-    this.opt = $.extend({
-      txt : ''
-    }, opt);
-
-    this.init();
-  };
-
-  Obj.prototype = {
-    init : function() {
-       
-    },
-    destroy : function() {
-      this.$el.removeData(__pluginName);
-    },
-    update : function(opt) {
-      this.opt = $.extend(this.opt, opt);
-    }
-  };
-  
-  $.newPlugin(__pluginName, Obj);
-})(jQuery);
-
-```
