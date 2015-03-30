@@ -6,7 +6,7 @@
   <script src="../bower_components/qunit/qunit/qunit.js"></script>
   <link href="../bower_components/qunit/qunit/qunit.css" rel="stylesheet">
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../newPlugin.jquery.js"></script>
+  <script src="../bower_components/blanket/dist/qunit/blanket.min.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
@@ -14,6 +14,7 @@
 
   <div id="test"></div>
   <div id="test-w-data" data-test="some useful data"></div>
+  <script src="../newPlugin.jquery.js" data-cover></script>
   <script src="./tests.js"></script>
 </body>
 </html>

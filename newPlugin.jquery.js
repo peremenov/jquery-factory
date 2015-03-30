@@ -1,18 +1,24 @@
 (function($, window, undefined) {
   $.newPlugin = function(__pluginName, Obj, cb) {
-    var Obj = Obj || function() {}
+    Obj = Obj || function() {};
       /**
        * Using for debugging, etc
        * @return {Boolean}  if true, stores new Object to data
        */
-      , cb = cb || function() { return true; }
-    ;
+    cb = cb || function() { return true; };
 
     /**
      * Throw error if plugin name is not defined
      */
     if(!__pluginName || typeof __pluginName != 'string') {
-      throw new Error("Expected plugin name");
+      throw new Error('Expected plugin name');
+    }
+
+    /**
+     * Checking for old plugin existence
+     */
+    if($.fn[__pluginName] !== undefined) {
+      throw new Error('Plugin "' + __pluginName + '" already exists');
     }
 
     /**
@@ -46,7 +52,7 @@
         ;
 
         if(obj instanceof Obj) {
-          if(typeof opt == 'string' && typeof obj[opt] == "function")
+          if(typeof opt == 'string' && typeof obj[opt] == 'function')
             obj[opt].apply(obj, params);
           else
             obj.update.apply(obj, args);
@@ -62,7 +68,8 @@
               oldData = obj;
 
             obj = new Obj($self, opt, oldData);
-            cb.call(obj) && $self.data(__pluginName, obj);
+            if( cb.call(obj) )
+              $self.data(__pluginName, obj);
           }
         }
       });

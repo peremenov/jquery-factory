@@ -1,15 +1,15 @@
 {
   "name": "jquery-factory",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/peremenov/jquery-factory",
-  "description": "Super simple and solid factory for jQuery plugins",
+  "description": "Super simple, lightweight and solid factory of jQuery plugins",
   "main": "newPlugin.jquery.js",
   "keywords": [
     "jquery",
     "plugin",
     "factory",
     "new",
-    "plugin"
+    "create"
   ],
   "authors": [
     "Kir Peremenov <kirill@peremenov.ru>"
@@ -26,6 +26,7 @@
     "jquery": ">=1.6"
   },
   "devDependencies": {
-    "qunit": "~1.17.1"
+    "qunit": "~1.17.1",
+    "blanket": "~1.1.5"
   }
 }
