@@ -5,11 +5,11 @@ Super simple, lightweight and solid factory of jQuery plugins. It allows to foll
 ## Features
 
 - Support all modern browsers (including mobile browsers)
-- Support Internet Explorer 6-11
+- Support Internet Explorer 6-8 (needs jQuery 1.8 or less)
 - Support jQuery version from 1.6
 - Around 600 bytes compressed
 - Efficient code re-usage when writing several plugins
-- Test mode available
+- Test mode
 
 ## Usage
 
@@ -29,7 +29,7 @@ By default each created plugin has built-in `init`, `update` and `destroy` metho
 
 `update` method using for options update and changing instance state.
 
-`destroy` method for final destroying: handlers  unattaching and plugin instance removing (using [`.removeData`](http://api.jquery.com/removeData/)).
+`destroy` method for final destroying: handlers unattaching and plugin instance removing (using [`.removeData`](http://api.jquery.com/removeData/)).
 
 You can append any method by adding it to prototype of constructor function.
 
@@ -153,3 +153,22 @@ $('.element-set').plugin('smartMove');
 $('.element-set').plugin('destroy');
 
 ```
+
+
+## Todo
+
+- Create plugin instances with `Object.create` (will loose compatibility with old browsers)
+- More tests
+- Publish to `npm`
+- More examples
+- Deploy tests to [travis.org](https://travis-ci.org)
+
+
+## Contributing
+
+You are welcomed to improve this small piece of software :)
+
+
+## Author
+
+- [Kir Peremenov](kirill@peremenov.ru)
