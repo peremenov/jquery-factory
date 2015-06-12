@@ -21,7 +21,19 @@ bower install --save jquery-factory
 
 ### `$.newPlugin(pluginName, Constr, callback)`
 
-Produces new jQuery plugin in `$.fn` object with **Constr**. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
+Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
+
+#### Constructor
+
+**Constr** takes `$element`, `options` and `htmlData` arguments.
+
+`$element` contains jQuery oblect of current element
+
+`options` has any data passed while plugin init
+
+`htmlData` has value of `data-<pluginname>` attribute (for example `<span data-plugin="myText"></span>`).
+
+#### Methods
 
 By default each created plugin has built-in `init`, `update` and `destroy` methods that could be redefined.
 
@@ -33,7 +45,9 @@ By default each created plugin has built-in `init`, `update` and `destroy` metho
 
 You can append any method by adding it to prototype of constructor function.
 
-Plugin instances stores with jQuery [`.data`](http://api.jquery.com/data/) method so you can get plugin instance for testing or other purposes.
+#### Instances
+
+Plugin instance stores with jQuery [`.data`](http://api.jquery.com/data/) method so you can get it for testing or other purposes.
 
 You can enable test mode by giving **callback** argument to `$.newPlugin`. **callback** accepts plugin instance context and should return `true` to continue instance attaching or `false` to prevent it.
 
@@ -154,6 +168,8 @@ $('.element-set').plugin('destroy');
 
 ```
 
+More examples available in [tests](https://github.com/peremenov/jquery-factory/blob/master/test/tests.js)
+
 
 ## Todo
 
@@ -162,6 +178,8 @@ $('.element-set').plugin('destroy');
 - Publish to `npm`
 - More examples
 - Deploy tests to [travis.org](https://travis-ci.org)
+- Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
+- Improve readme
 
 
 ## Contributing
@@ -171,4 +189,4 @@ You are welcomed to improve this small piece of software :)
 
 ## Author
 
-- [Kir Peremenov](kirill@peremenov.ru)
+- [Kir Peremenov](mailto:kirill@peremenov.ru)
