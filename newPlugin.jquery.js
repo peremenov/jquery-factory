@@ -41,14 +41,11 @@
        */
       $.each(arguments, function(index, arg) { args.push(arg); });
 
-      var opt  = args[0]
-        , params = args.slice(1)
+      var opt  = args[0], params = args.slice(1)
       ;
 
       return this.each(function() {
-        var $self = $(this)
-          , obj = $self.data(__pluginName)
-          , oldData
+        var $self = $(this), obj = $self.data(__pluginName), oldData
         ;
 
         if(obj instanceof Obj) {
