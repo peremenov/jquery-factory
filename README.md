@@ -23,6 +23,12 @@ bower install --save jquery-factory
 
 Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
 
+`$.fn[pluginName]` has `__constr__` property to check plugin accessory:
+
+```javascript
+$('.element').data(pluginName) instanceof $.fn[pluginName].__constr__
+```
+
 #### Constructor
 
 **Constr** takes `$element`, `options` and `htmlData` arguments.
@@ -179,7 +185,8 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 - More examples
 - Deploy tests to [travis.org](https://travis-ci.org)
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
-- Improve readme
+- ~~Improve readme~~
+- ~~Attach constructor to check plugin accessory~~
 
 
 ## Contributing

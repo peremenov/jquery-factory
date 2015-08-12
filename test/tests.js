@@ -39,6 +39,8 @@ QUnit.test('Factory', function(assert) {
   $.newPlugin(pluginName, pluginFunc);
 
   assert.ok($.fn[pluginName] instanceof Function, 'new "test" plugin created');
+  
+  assert.ok($.fn[pluginName].__constr__ === pluginFunc, 'plugin has __constr__ property');
 
   assert.throws(function() {
     $.newPlugin(pluginName, $.noop);
@@ -53,6 +55,7 @@ QUnit.test('Plugin instance', function(assert) {
 
   $(testEl).test();
   assert.ok($(testEl).data(pluginName) instanceof pluginFunc, 'attached to jQuery element');
+  assert.ok($(testEl).data(pluginName) instanceof $.fn[pluginName].__constr__, 'attached to jQuery element (via __constr__)');
   assert.ok($(testEl).data(pluginName).opt === undefined, 'has no options');
 
   $(testEl).test(pluginOptString);
