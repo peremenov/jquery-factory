@@ -1,4 +1,4 @@
-# jQuery Factory
+# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory)
 
 Super simple, lightweight and solid factory of jQuery plugins. It allows to follow classic JavaScript patterns instead of [jQuery's](https://learn.jquery.com/plugins/basic-plugin-creation/) while creating plugin.
 
