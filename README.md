@@ -183,8 +183,8 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 - More tests
 - Publish to `npm`
 - More examples
-- Deploy tests to [travis.org](https://travis-ci.org)
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
+- ~~Deploy tests to [travis-ci.org](https://travis-ci.org)~~
 - ~~Improve readme~~
 - ~~Attach constructor to check plugin accessory~~
 
