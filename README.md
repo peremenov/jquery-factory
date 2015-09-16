@@ -45,7 +45,7 @@ By default each created plugin has built-in `init`, `update` and `destroy` metho
 
 `init` method should contain event handlers attaching, initial data, adding classes, etc.
 
-`update` method using for options update and changing instance state.
+`update` method using for options update and changing instance state. Method will be called if plugin instance was already created on element.
 
 `destroy` method for final destroying: handlers unattaching and plugin instance removing (using [`.removeData`](http://api.jquery.com/removeData/)).
 
