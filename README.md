@@ -1,4 +1,4 @@
-# jQuery Factory
+# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory)
 
 Super simple, lightweight and solid factory of jQuery plugins. It allows to follow classic JavaScript patterns instead of [jQuery's](https://learn.jquery.com/plugins/basic-plugin-creation/) while creating plugin.
 
@@ -23,6 +23,12 @@ bower install --save jquery-factory
 
 Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
 
+`$.fn[pluginName]` has `__constr__` property to check plugin accessory:
+
+```javascript
+$('.element').data(pluginName) instanceof $.fn[pluginName].__constr__
+```
+
 #### Constructor
 
 **Constr** takes `$element`, `options` and `htmlData` arguments.
@@ -39,7 +45,7 @@ By default each created plugin has built-in `init`, `update` and `destroy` metho
 
 `init` method should contain event handlers attaching, initial data, adding classes, etc.
 
-`update` method using for options update and changing instance state.
+`update` method using for options update and changing instance state. Method will be called if plugin instance was already created on element.
 
 `destroy` method for final destroying: handlers unattaching and plugin instance removing (using [`.removeData`](http://api.jquery.com/removeData/)).
 
@@ -177,9 +183,10 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 - More tests
 - Publish to `npm`
 - More examples
-- Deploy tests to [travis.org](https://travis-ci.org)
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
-- Improve readme
+- ~~Deploy tests to [travis-ci.org](https://travis-ci.org)~~
+- ~~Improve readme~~
+- ~~Attach constructor to check plugin accessory~~
 
 
 ## Contributing

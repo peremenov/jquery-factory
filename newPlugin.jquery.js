@@ -34,7 +34,7 @@
      * Creating new instance(s) for each given element
      * @return {jQuery}  returns jQuery object
      */
-    $.fn[__pluginName] = function() {
+    var fn = $.fn[__pluginName] = function() {
       var args = [];
       /**
        * Using $.each because $.map function flatten arrays
@@ -71,5 +71,7 @@
         }
       });
     };
+
+    fn.__constr__ = Obj;
   };
 })(jQuery, window);
