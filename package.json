@@ -1,0 +1,39 @@
+{
+  "name": "jquery-factory",
+  "version": "0.1.2",
+  "description": "Super simple, lightweight and solid factory of jQuery plugins",
+  "main": "newPlugin.jquery.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "postinstall" : "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peremenov/jquery-factory.git"
+  },
+  "keywords": [
+    "jquery",
+    "plugin",
+    "factory",
+    "new",
+    "create"
+  ],
+  "author": "Kir Peremenov <kirill@peremenov.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peremenov/jquery-factory/issues"
+  },
+  "homepage": "https://github.com/peremenov/jquery-factory",
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "devDependencies": {
+    "blanket": "^1.2.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-qunit": "^0.7.0",
+    "qunit": "^0.7.7"
+  }
+}

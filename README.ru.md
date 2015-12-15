@@ -1,4 +1,6 @@
-# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory)
+# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory) [![npm version](https://badge.fury.io/js/jquery-factory.svg)](https://badge.fury.io/js/jquery-factory)
+
+![](logo.png)
 
 ### [In English](https://github.com/peremenov/jquery-factory/blob/master/README.md)
 
@@ -19,6 +21,10 @@
 
 ```bash
 bower install --save jquery-factory
+```
+
+```bash
+npm install --save jquery-factory
 ```
 
 ### `$.newPlugin(pluginName, Constr, callback)`
@@ -182,9 +188,9 @@ $('.element-set').plugin('destroy');
 
 - Создавать экземпляры плагина с помощью `Object.create` (при этом будет потеряна совместимость со старыми браузерами)
 - Больше тестов
-- Публикация в `npm`
 - Больше примеров
 - Адаптация (возможно форк?) для [БЭМ](https://ru.bem.info/) процесса разработки
+- ~~Публикация в `npm`~~
 - ~~Развернуть тестирование на [travis-ci.org](https://travis-ci.org)~~
 - ~~Улучшить README~~
 - ~~Attach constructor to check plugin accessory~~
@@ -201,3 +207,4 @@ $('.element-set').plugin('destroy');
 ## Благодарности
 
 - [asg-3d](https://github.com/asg-3d)
+- [KlonD90](https://github.com/KlonD90)

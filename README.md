@@ -1,4 +1,6 @@
-# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory)
+# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory) [![npm version](https://badge.fury.io/js/jquery-factory.svg)](https://badge.fury.io/js/jquery-factory)
+
+![](logo.png)
 
 ### [По-русски](https://github.com/peremenov/jquery-factory/blob/master/README.ru.md)
 
@@ -19,6 +21,10 @@ Super simple, lightweight and solid factory of jQuery plugins. It allows to foll
 
 ```bash
 bower install --save jquery-factory
+```
+
+```bash
+npm install --save jquery-factory
 ```
 
 ### `$.newPlugin(pluginName, Constr, callback)`
@@ -183,9 +189,9 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 
 - Create plugin instances with `Object.create` (will loose compatibility with old browsers)
 - More tests
-- Publish to `npm`
 - More examples
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
+- ~~Publish to `npm`~~
 - ~~Deploy tests to [travis-ci.org](https://travis-ci.org)~~
 - ~~Improve readme~~
 - ~~Attach constructor to check plugin accessory~~
@@ -203,3 +209,4 @@ You are welcomed to improve this small piece of software :)
 ## Thanks to
 
 - [asg-3d](https://github.com/asg-3d)
+- [KlonD90](https://github.com/KlonD90)
