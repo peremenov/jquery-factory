@@ -1,4 +1,8 @@
-# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory) [![npm version](https://badge.fury.io/js/jquery-factory.svg)](https://badge.fury.io/js/jquery-factory)
+# jQuery Factory
+[![Build Status](https://img.shields.io/travis/peremenov/jquery-factory.svg)](https://travis-ci.org/peremenov/jquery-factory)
+[![npm version](https://img.shields.io/npm/v/jquery-factory.svg)](https://www.npmjs.com/package/jquery-factory)
+[![bower version](https://img.shields.io/bower/v/jquery-factory.svg)](http://bower.io/search/?q=jquery-factory)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/af063b6571ee43afa16b858e2ca0df0c)](https://www.codacy.com/app/peremenov/jquery-factory)
 
 ![](logo.png)
 
@@ -19,22 +23,35 @@ Super simple, lightweight and solid factory of jQuery plugins. It allows to foll
 
 ### Install
 
+Bower
+
 ```bash
 bower install --save jquery-factory
 ```
+
+Npm
 
 ```bash
 npm install --save jquery-factory
 ```
 
-### `$.newPlugin(pluginName, Constr, callback)`
+### Plugin creation `$.newPlugin(pluginName, Constr, options)`
+
+**pluginName** — name of creating plugin. Should not contain name of existing plugins and internal jQuery methods
+
+**Constr** — constructor Function for new plugin.
+
+**options** — options object wich contain next props (could be Function for back compatibility with previous versions):
+
+* cb
+* public
 
 Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
 
-`$.fn[pluginName]` has `__constr__` property to check plugin accessory:
+`$.fn.pluginName` has `__constr__` property with **Constr** to check plugin accessory:
 
 ```javascript
-$('.element').data(pluginName) instanceof $.fn[pluginName].__constr__
+$('.element').data(pluginName) instanceof $.fn.pluginName.__constr__
 ```
 
 #### Constructor
@@ -187,15 +204,11 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 
 ## Todo
 
+- Сompatibility tests with [Zepto](http://zeptojs.com)
 - Create plugin instances with `Object.create` (will loose compatibility with old browsers)
 - More tests
 - More examples
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
-- ~~Publish to `npm`~~
-- ~~Deploy tests to [travis-ci.org](https://travis-ci.org)~~
-- ~~Improve readme~~
-- ~~Attach constructor to check plugin accessory~~
-
 
 ## Contributing
 

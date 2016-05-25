@@ -1,10 +1,7 @@
 language: node_js
 node_js:
-  - "0.12"
+  - "4"
 before_script:
-  - npm install -g grunt-cli
-  - npm install -g bower
-  - npm install grunt-contrib-qunit grunt
-  - bower install
+  - npm i
 
-script: grunt test --verbose --force
+script: npm test

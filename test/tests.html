@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <script src="../bower_components/qunit/qunit/qunit.js"></script>
-  <link href="../bower_components/qunit/qunit/qunit.css" rel="stylesheet">
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/blanket/dist/qunit/blanket.min.js"></script>
+  <script src="../node_modules/qunitjs/qunit/qunit.js"></script>
+  <link href="../node_modules/qunitjs/qunit/qunit.css" rel="stylesheet">
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
 
   <div id="test"></div>
-  <div id="test-w-data" data-test="some useful data"></div>
+  <div id="test-w-data" data-testfactory="some useful data"></div>
   <script src="../newPlugin.jquery.js" data-cover></script>
   <script src="./tests.js"></script>
 </body>

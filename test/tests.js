@@ -1,4 +1,5 @@
-var pluginName = 'test';
+var pluginNameFactory = 'testinstance';
+var pluginNameInstance = 'testfactory';
 var pluginOptString = 'options';
 var pluginOptObject = {
   string: 'This is a test',
@@ -11,7 +12,7 @@ var pluginFunc = function($el, opt, old) {
   this.old = old;
 
   this.destroy = function() {
-    this.$el.removeData(pluginName);
+    this.$el.removeData(pluginNameInstance);
   };
 
   this.update = function(opt, opt2, opt3) {
@@ -26,6 +27,8 @@ var testWDataEl = '#test-w-data';
 var testData = 'some useful data'; // the same as in HTML
 
 QUnit.test('Factory', function(assert) {
+  delete $[pluginNameFactory];
+
   assert.ok($.newPlugin instanceof Function, '$.newPlugin defined');
 
   assert.throws(function() {
@@ -36,58 +39,68 @@ QUnit.test('Factory', function(assert) {
     $.newPlugin(pluginFunc);
   }, 'plugin name must be string');
 
-  $.newPlugin(pluginName, pluginFunc);
+  $.newPlugin(pluginNameFactory, pluginFunc);
 
-  assert.ok($.fn[pluginName] instanceof Function, 'new "test" plugin created');
+  assert.ok($.fn[pluginNameFactory] instanceof Function, 'new "test" plugin created');
   
-  assert.ok($.fn[pluginName].__constr__ === pluginFunc, 'plugin has __constr__ property');
+  assert.ok($.fn[pluginNameFactory].__constr__ === pluginFunc, 'plugin has __constr__ property');
 
   assert.throws(function() {
-    $.newPlugin(pluginName, $.noop);
+    $.newPlugin(pluginNameFactory, $.noop);
   }, 'plugin "test" already exists');
 
-  assert.ok( !($.fn[pluginName] instanceof $.noop), 'plugin with same name didn\'t not created');
+  assert.ok( !($.fn[pluginNameFactory] instanceof $.noop), 'plugin with same name didn\'t not created');
+
+  delete $[pluginNameFactory];
 });
 
 QUnit.test('Plugin instance', function(assert) {
-  $(testEl).test('destroy');
-  assert.ok($(testEl).data(pluginName) === undefined, 'destroyed (should not create new instance)');
+  delete $[pluginNameInstance];
 
-  $(testEl).test();
-  assert.ok($(testEl).data(pluginName) instanceof pluginFunc, 'attached to jQuery element');
-  assert.ok($(testEl).data(pluginName) instanceof $.fn[pluginName].__constr__, 'attached to jQuery element (via __constr__)');
-  assert.ok($(testEl).data(pluginName).opt === undefined, 'has no options');
+  $.newPlugin(pluginNameInstance, pluginFunc);
+  
+  $(testEl)[pluginNameInstance]('destroy');
+  assert.ok($(testEl).data(pluginNameInstance) === undefined, 'destroyed (should not create new instance)');
 
-  $(testEl).test(pluginOptString);
-  assert.ok($(testEl).data(pluginName).opt === pluginOptString, 'has string options');
+  $(testEl)[pluginNameInstance]();
+  assert.ok($(testEl).data(pluginNameInstance) instanceof pluginFunc, 'attached to jQuery element');
+  assert.ok($(testEl).data(pluginNameInstance) instanceof $.fn[pluginNameInstance].__constr__, 'attached to jQuery element (via __constr__)');
+  assert.ok($(testEl).data(pluginNameInstance).opt === undefined, 'has no options');
 
-  $(testEl).test(pluginOptArray);
+  $(testEl)[pluginNameInstance](pluginOptString);
+  assert.ok($(testEl).data(pluginNameInstance).opt === pluginOptString, 'has string options');
 
-  assert.equal($(testEl).data(pluginName).opt, pluginOptArray, 'has array options');
+  $(testEl)[pluginNameInstance](pluginOptArray);
 
-  $(testEl).test('destroy');  
-  $(testEl).test(pluginOptObject);
+  assert.equal($(testEl).data(pluginNameInstance).opt, pluginOptArray, 'has array options');
 
-  assert.equal($(testEl).data(pluginName).opt, pluginOptObject, 'has object options');
+  $(testEl)[pluginNameInstance]('destroy');  
+  $(testEl)[pluginNameInstance](pluginOptObject);
 
-  $(testEl).test('update', pluginOptObject, pluginOptArray, pluginOptString);
+  assert.equal($(testEl).data(pluginNameInstance).opt, pluginOptObject, 'has object options');
 
-  assert.equal($(testEl).data(pluginName).opt, pluginOptObject, 'updated, argument 1 (method 1)');
-  assert.equal($(testEl).data(pluginName).opt2, pluginOptArray, 'updated, argument 2 (method 1)');
-  assert.equal($(testEl).data(pluginName).opt3, pluginOptString, 'updated, argument 3 (method 1)');
+  $(testEl)[pluginNameInstance]('update', pluginOptObject, pluginOptArray, pluginOptString);
 
-  $(testEl).test(pluginOptString, pluginOptObject, pluginOptArray);
+  assert.equal($(testEl).data(pluginNameInstance).opt, pluginOptObject, 'updated, argument 1 (method 1)');
+  assert.equal($(testEl).data(pluginNameInstance).opt2, pluginOptArray, 'updated, argument 2 (method 1)');
+  assert.equal($(testEl).data(pluginNameInstance).opt3, pluginOptString, 'updated, argument 3 (method 1)');
 
-  assert.equal($(testEl).data(pluginName).opt, pluginOptString, 'updated, argument 1 (method 2)');
-  assert.equal($(testEl).data(pluginName).opt2, pluginOptObject, 'updated, argument 2 (method 2)');
-  assert.equal($(testEl).data(pluginName).opt3, pluginOptArray, 'updated, argument 3 (method 2)');
+  $(testEl)[pluginNameInstance](pluginOptString, pluginOptObject, pluginOptArray);
 
-  $(testEl).test('destroy');
-  $(testWDataEl).test();
+  assert.equal($(testEl).data(pluginNameInstance).opt, pluginOptString, 'updated, argument 1 (method 2)');
+  assert.equal($(testEl).data(pluginNameInstance).opt2, pluginOptObject, 'updated, argument 2 (method 2)');
+  assert.equal($(testEl).data(pluginNameInstance).opt3, pluginOptArray, 'updated, argument 3 (method 2)');
 
-  assert.ok($(testWDataEl).data(pluginName).old === testData, 'reads data placed to HTML');
+  $(testEl)[pluginNameInstance]('destroy');
 
-  $(testWDataEl).test('destroy');
-  assert.ok($(testEl).data(pluginName) === undefined, 'destroyed');
+  //////
+  $(testWDataEl)[pluginNameInstance]();
+
+  assert.equal($(testWDataEl).data(pluginNameInstance).old, testData, 'reads data placed to HTML');
+
+  $(testWDataEl)[pluginNameInstance]('destroy');
+  assert.equal($(testEl).data(pluginNameInstance), undefined, 'destroyed');
+
+  delete $[pluginNameInstance];
 });
 

@@ -1,4 +1,8 @@
-# jQuery Factory [![Build Status](https://travis-ci.org/peremenov/jquery-factory.svg?branch=master)](https://travis-ci.org/peremenov/jquery-factory) [![npm version](https://badge.fury.io/js/jquery-factory.svg)](https://badge.fury.io/js/jquery-factory)
+# jQuery Factory
+[![Build Status](https://img.shields.io/travis/peremenov/jquery-factory.svg)](https://travis-ci.org/peremenov/jquery-factory)
+[![npm version](https://img.shields.io/npm/v/jquery-factory.svg)](https://www.npmjs.com/package/jquery-factory)
+[![bower version](https://img.shields.io/bower/v/jquery-factory.svg)](http://bower.io/search/?q=jquery-factory)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/af063b6571ee43afa16b858e2ca0df0c)](https://www.codacy.com/app/peremenov/jquery-factory)
 
 ![](logo.png)
 
@@ -19,22 +23,26 @@
 
 ### Установка
 
+Bower
+
 ```bash
 bower install --save jquery-factory
 ```
+
+Npm
 
 ```bash
 npm install --save jquery-factory
 ```
 
-### `$.newPlugin(pluginName, Constr, callback)`
+### Создание плагина `$.newPlugin(pluginName, Constr, options)`
 
 Создает новый jQuery плагин в `$.fn`-объекте с функцией-конструктором **Constr**. Фабрика принимает название плагина в виде строки **pluginName**. Если плагин с таким именем существует, будет брошена ошибка.
 
-После создания, объект `$.fn[pluginName]` содержит свойство `__constr__` для возможности проверки принадлежности плагина:
+После создания, объект `$.fn.pluginName` содержит свойство `__constr__` с конструктором **Constr** для возможности проверки принадлежности плагина:
 
 ```javascript
-$('.element').data(pluginName) instanceof $.fn[pluginName].__constr__
+$('.element').data(pluginName) instanceof $.fn.pluginName.__constr__
 ```
 
 #### Конструктор
@@ -186,19 +194,15 @@ $('.element-set').plugin('destroy');
 
 ## В планах
 
-- Создавать экземпляры плагина с помощью `Object.create` (при этом будет потеряна совместимость со старыми браузерами)
+- Тесты совместимости с [Zepto](http://zeptojs.com)
+- Создавать экземпляры плагина с помощью `Object.create` (будет потеряна совместимость со старыми браузерами)
 - Больше тестов
 - Больше примеров
 - Адаптация (возможно форк?) для [БЭМ](https://ru.bem.info/) процесса разработки
-- ~~Публикация в `npm`~~
-- ~~Развернуть тестирование на [travis-ci.org](https://travis-ci.org)~~
-- ~~Улучшить README~~
-- ~~Attach constructor to check plugin accessory~~
 
+## Помощь проекту
 
-## Помочь проекту
-
-Сделайте свой вклад в улучшение этого небольшого проекта :)
+Сделайте свой вклад в улучшение проекта :)
 
 ## Автор
 
