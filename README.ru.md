@@ -13,15 +13,14 @@
 ## Возможности
 
 - Поддержка всех современных браузеров (включая мобильные браузеры)
-- Поддержка Internet Explorer 6-8 (необходима jQuery 1.8 или старше)
+- Поддержка Internet Explorer 7-8 (необходима jQuery 1.8 или старше)
 - Поддержка jQuery начиная с версии 1.6
 - Около 600 байт в сжатом виде
 - Эффективное реиспользование кода при написании нескольких плагинов
+- Поддкржка requirejs/webpack и amd
 - Режим тестирования
 
-## Использование
-
-### Установка
+## Установка
 
 Bower
 
@@ -33,6 +32,15 @@ Npm
 
 ```bash
 npm install --save jquery-factory
+```
+
+## Использование
+
+### Использование с requirejs или webpack
+
+```javascript
+var $ = require('jquery')(window),
+    newPlugin = require('jquery-factory')($);
 ```
 
 ### Создание плагина `$.newPlugin(pluginName, Constr, options)`

@@ -7,8 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/gulp/bin/gulp.js test",
-    "lint": "./node_modules/eslint/bin/eslint.js newPlugin.jquery.js"
+    "testbrowser": "./node_modules/gulp/bin/gulp.js test",
+    "testnode": "./node_modules/.bin/mocha ./test/tests-node.js",
+    "test": "npm run testnode && npm run testbrowser",
+    "lint": "./node_modules/eslint/bin/eslint.js newPlugin.jquery.js",
+    "build": "./node_modules/gulp/bin/gulp.js"
   },
   "repository": {
     "type": "git",
@@ -31,11 +34,12 @@
     "jquery": ">=1.6"
   },
   "devDependencies": {
-    "blanket": "1.2.3",
+    "chai": "^3.5.0",
     "eslint": "2.10.2",
     "gulp": "3.9.1",
-    "gulp-qunit": "1.4.0",
+    "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-uglify": "1.5.3",
-    "qunitjs": "1.21.0"
+    "jsdom": "^9.2.0",
+    "mocha": "^2.5.3"
   }
 }

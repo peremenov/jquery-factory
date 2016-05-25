@@ -1,8 +1,17 @@
-(function($, undefined) {
+(function(root, factory) {
+  if ( typeof define === 'function' && define.amd ) {
+    define([ 'jquery' ], factory);
+  } else if ( typeof module == 'object' && module.exports ) {
+    module.exports = function($) {
+      return factory($);
+    };
+  } else {
+    if ( !root.jQuery )
+      throw new Error('jQuery must be defined');
+    root.jQuery.newPlugin = factory(root.jQuery);
+  }
+})(this, function($, undefined) {
   'use strict';
-
-  if ( !$ )
-    throw new Error('jQuery must be defined');
 
   var noop = $.noop;
   /**
@@ -10,31 +19,29 @@
    * @type {Object}
    */
   var defaultOptions = {
-    cb: function() { return true; },
-    // should be Array or null
-    public: null
+    ready: function() { return true; }
   };
 
   /**
-   * Creates plugin in $.fn object
+   * Creates new plugin in `$.fn` object. If plugin/method exists factory throws error.
    * @param  {String} __pluginName plugin name must be unique relative to other plugins and internal jQuery methods
    * @param  {Function} Obj        plugin constructor Function
    * @param  {(Object|Function)} options    plugin options or callback Function
    * @return {Object}              returns plugin object itself
    */
-  return $.newPlugin = function(__pluginName, Obj, options) {
-    var cb;
-    Obj = Obj instanceof Function ? Obj : function() {};
+  return function(__pluginName, Obj, options) {
+    var ready;
+    Obj = typeof Obj == 'function' ? Obj : noop;
 
     /**
      * Using for debugging, etc
      * @return {Boolean}  if true, stores new Object to data
      */
-    if ( options instanceof Function ) {
-      cb = options;
+    if ( typeof options == 'function' ) {
+      ready = options;
     } else {
       options = $.extend({}, defaultOptions, options);
-      cb = options.cb;
+      ready = options.ready;
     }
 
     /**
@@ -80,7 +87,7 @@
             oldData;
 
         if ( obj instanceof Obj ) {
-          if ( typeof opt == 'string' && obj[opt] instanceof Function )
+          if ( typeof opt == 'string' && typeof obj[opt] == 'function' )
             obj[opt].apply(obj, params);
           else
             obj.update.apply(obj, args);
@@ -97,7 +104,7 @@
 
             obj = new Obj($self, opt, oldData);
             
-            if ( cb.call(obj) )
+            if ( ready.call(obj) )
               $self.data(__pluginName, obj);
           }
         }
@@ -107,4 +114,4 @@
     fn.__constr__ = Obj;
     return fn;
   };
-})( (typeof exports != 'undefined' && exports) || (typeof window != 'undefined' && window.jQuery) || {} );
+});

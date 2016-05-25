@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    qunit = require('gulp-qunit'),
+    qunit = require('gulp-mocha-phantomjs'),
     uglify = require('gulp-uglify');
 
 gulp.task('test', function() {

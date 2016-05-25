@@ -13,15 +13,14 @@ Super simple, lightweight and solid factory of jQuery plugins. It allows to foll
 ## Features
 
 - Support all modern browsers (including mobile browsers)
-- Support Internet Explorer 6-8 (needs jQuery 1.8 or older)
+- Support Internet Explorer 7-8 (needs jQuery 1.8 or older)
 - Support jQuery version from 1.6
 - Around 600 bytes compressed
 - Efficient code re-usage when writing several plugins
+- Support requirejs/webpack and amd
 - Test mode
 
-## Usage
-
-### Install
+## Install
 
 Bower
 
@@ -35,24 +34,24 @@ Npm
 npm install --save jquery-factory
 ```
 
+## Usage
+
+### Usage with requirejs or webpack
+
+```javascript
+var $ = require('jquery')(window),
+    newPlugin = require('jquery-factory')($);
+```
+
 ### Plugin creation `$.newPlugin(pluginName, Constr, options)`
+
+Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
 
 **pluginName** — name of creating plugin. Should not contain name of existing plugins and internal jQuery methods
 
 **Constr** — constructor Function for new plugin.
 
-**options** — options object wich contain next props (could be Function for back compatibility with previous versions):
-
-* cb
-* public
-
-Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
-
-`$.fn.pluginName` has `__constr__` property with **Constr** to check plugin accessory:
-
-```javascript
-$('.element').data(pluginName) instanceof $.fn.pluginName.__constr__
-```
+**callback** — callback function (deprecated)
 
 #### Constructor
 
@@ -82,6 +81,11 @@ Plugin instance stores with jQuery [`.data`](http://api.jquery.com/data/) method
 
 You can enable test mode by giving **callback** argument to `$.newPlugin`. **callback** accepts plugin instance context and should return `true` to continue instance attaching or `false` to prevent it.
 
+To check accessory of `$.fn.pluginName` use `__constr__` property with **Constr** to check plugin accessory:
+
+```javascript
+$('.element').data(pluginName) instanceof $.fn.pluginName.__constr__
+```
 
 ### Examples
 
@@ -213,7 +217,6 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 ## Contributing
 
 You are welcomed to improve this small piece of software :)
-
 
 ## Author
 
