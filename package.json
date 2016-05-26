@@ -1,6 +1,6 @@
 {
   "name": "jquery-factory",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Super simple, lightweight and solid factory of jQuery plugins",
   "main": "newPlugin.jquery.js",
   "directories": {
