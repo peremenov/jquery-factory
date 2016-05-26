@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/jquery-factory.svg)](https://www.npmjs.com/package/jquery-factory)
 [![bower version](https://img.shields.io/bower/v/jquery-factory.svg)](http://bower.io/search/?q=jquery-factory)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/af063b6571ee43afa16b858e2ca0df0c)](https://www.codacy.com/app/peremenov/jquery-factory)
+[![Dependency Status](https://www.versioneye.com/nodejs/jquery-factory/badge?style=flat)](https://www.versioneye.com/nodejs/jquery-factory/)
 
 ![](logo.png)
 
@@ -15,6 +16,7 @@
 - Поддержка всех современных браузеров (включая мобильные браузеры)
 - Поддержка Internet Explorer 7-8 (необходима jQuery 1.8 или старше)
 - Поддержка jQuery начиная с версии 1.6
+- Поддержка [Zepto](http://zeptojs.com/) (нужен модуль [data](https://github.com/madrobby/zepto/blob/master/src/data.js))
 - Около 600 байт в сжатом виде
 - Эффективное реиспользование кода при написании нескольких плагинов
 - Поддкржка requirejs/webpack и amd
@@ -55,11 +57,11 @@ $('.element').data(pluginName) instanceof $.fn.pluginName.__constr__
 
 #### Конструктор
 
-**Constr** принимает в качестве параметров `$element`, `options` и `htmlData`.
+**Constr** принимает в качестве параметров `$element`, `callback` и `htmlData`.
 
 `$element` содержит текущий jQuery-элемент
 
-`options` содержит настройки для инициализации плагина
+`callback` колбэк по окончанию инициализации (не рекомендуется)
 
 `htmlData` содержит значение html-атрибута `data-<pluginname>`, если он был (например `<span data-plugin="myText"></span>`).
 

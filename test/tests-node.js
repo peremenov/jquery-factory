@@ -14,3 +14,5 @@ describe('require test', function () {
 	});
 
 });
+
+require('./tests');

@@ -6,9 +6,10 @@
       return factory($);
     };
   } else {
-    if ( !root.jQuery )
-      throw new Error('jQuery must be defined');
-    root.jQuery.newPlugin = factory(root.jQuery);
+    var $ = root.jQuery || root.Zepto;
+    if ( !$ )
+      throw new Error('jQuery or Zepto must be defined');
+    $.newPlugin = factory($);
   }
 })(this, function($, undefined) {
   'use strict';

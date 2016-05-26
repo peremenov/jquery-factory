@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/jquery-factory.svg)](https://www.npmjs.com/package/jquery-factory)
 [![bower version](https://img.shields.io/bower/v/jquery-factory.svg)](http://bower.io/search/?q=jquery-factory)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/af063b6571ee43afa16b858e2ca0df0c)](https://www.codacy.com/app/peremenov/jquery-factory)
+[![Dependency Status](https://www.versioneye.com/nodejs/jquery-factory/badge?style=flat)](https://www.versioneye.com/nodejs/jquery-factory/)
 
 ![](logo.png)
 
@@ -15,6 +16,7 @@ Super simple, lightweight and solid factory of jQuery plugins. It allows to foll
 - Support all modern browsers (including mobile browsers)
 - Support Internet Explorer 7-8 (needs jQuery 1.8 or older)
 - Support jQuery version from 1.6
+- Support [Zepto](http://zeptojs.com/) (needs [data](https://github.com/madrobby/zepto/blob/master/src/data.js) module)
 - Around 600 bytes compressed
 - Efficient code re-usage when writing several plugins
 - Support requirejs/webpack and amd
@@ -43,7 +45,7 @@ var $ = require('jquery')(window),
     newPlugin = require('jquery-factory')($);
 ```
 
-### Plugin creation `$.newPlugin(pluginName, Constr, options)`
+### Plugin creation `$.newPlugin(pluginName, Constr, callback)`
 
 Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
 

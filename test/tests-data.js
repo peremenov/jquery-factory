@@ -26,15 +26,18 @@ var testEl = '#test';
 var testWDataEl = '#test-w-data';
 var testData = 'some useful data'; // the same as in HTML
 
+var data = {
+  pluginNameFactory: pluginNameFactory,
+  pluginNameInstance: pluginNameInstance,
+  pluginOptString: pluginOptString,
+  pluginOptObject: pluginOptObject,
+  pluginOptArray: pluginOptArray,
+  pluginFunc: pluginFunc,
+  testEl: testEl,
+  testWDataEl: testWDataEl,
+  testData: testData
+};
+
+
 if ( typeof module == 'object')
-  module.exports = {
-    pluginNameFactory: pluginNameFactory,
-    pluginNameInstance: pluginNameInstance,
-    pluginOptString: pluginOptString,
-    pluginOptObject: pluginOptObject,
-    pluginOptArray: pluginOptArray,
-    pluginFunc: pluginFunc,
-    testEl: testEl,
-    testWDataEl: testWDataEl,
-    testData: testData
-  };
+  module.exports = data;
