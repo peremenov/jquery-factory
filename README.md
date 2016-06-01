@@ -45,6 +45,13 @@ var $ = require('jquery')(window),
     newPlugin = require('jquery-factory')($);
 ```
 
+### Usage in browser
+
+```html
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="/path/to/newPlugin.jquery.js"></script>
+```
+
 ### Plugin creation `$.newPlugin(pluginName, Constr, callback)`
 
 Produces new jQuery plugin in `$.fn` object with **Constr** function. Factory accepts string **pluginName**. If plugin with the same name is exists factory throws an error.
@@ -210,11 +217,11 @@ More examples available in [tests](https://github.com/peremenov/jquery-factory/b
 
 ## Todo
 
-- Сompatibility tests with [Zepto](http://zeptojs.com)
 - Create plugin instances with `Object.create` (will loose compatibility with old browsers)
 - More tests
 - More examples
 - Adapt (maybe fork?) for [BEM](https://en.bem.info) development process
+- ~~Сompatibility tests with [Zepto](http://zeptojs.com)~~
 
 ## Contributing
 

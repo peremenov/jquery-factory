@@ -45,6 +45,13 @@ var $ = require('jquery')(window),
     newPlugin = require('jquery-factory')($);
 ```
 
+### Использование в браузере
+
+```html
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="/path/to/newPlugin.jquery.js"></script>
+```
+
 ### Создание плагина `$.newPlugin(pluginName, Constr, options)`
 
 Создает новый jQuery плагин в `$.fn`-объекте с функцией-конструктором **Constr**. Фабрика принимает название плагина в виде строки **pluginName**. Если плагин с таким именем существует, будет брошена ошибка.
@@ -204,11 +211,11 @@ $('.element-set').plugin('destroy');
 
 ## В планах
 
-- Тесты совместимости с [Zepto](http://zeptojs.com)
 - Создавать экземпляры плагина с помощью `Object.create` (будет потеряна совместимость со старыми браузерами)
 - Больше тестов
 - Больше примеров
 - Адаптация (возможно форк?) для [БЭМ](https://ru.bem.info/) процесса разработки
+- ~~Тесты совместимости с [Zepto](http://zeptojs.com)~~
 
 ## Помощь проекту
 
