@@ -1,6 +1,6 @@
 {
   "name": "jquery-factory",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Super simple, lightweight and solid factory of jQuery plugins",
   "main": "newPlugin.jquery.js",
   "directories": {
@@ -34,13 +34,13 @@
     "jquery": ">=1.6"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "3.11.1",
+    "chai": "4.1.0",
+    "eslint": "4.3.0",
     "gulp": "3.9.1",
-    "gulp-mocha-phantomjs": "0.12.0",
-    "gulp-uglify": "2.0.0",
-    "jsdom": "9.8.3",
-    "mocha": "3.2.0",
-    "zepto": "madrobby/zepto#v1.1.6"
+    "gulp-mocha-phantomjs": "0.12.1",
+    "gulp-uglify": "3.0.0",
+    "jsdom": "11.1.0",
+    "mocha": "3.4.2",
+    "zepto": "madrobby/zepto#v1.2.0"
   }
 }

@@ -5,12 +5,12 @@ if ( typeof require == 'function' ) {
   var fs = require('fs');
   var chai = require('chai');
   var data = require('./tests-data');
-  var window = require('jsdom').jsdom(fs.readFileSync('./test/tests.html', { encoding: 'utf8' })).defaultView;
+  var JSDOM = require('jsdom').JSDOM;
+  var window = new JSDOM(fs.readFileSync('./test/tests.html', { encoding: 'utf8' })).window;
   var $ = require('jquery')(window);
   $.newPlugin = require('..')($);
 }
 
-var expect = chai.expect;
 var assert = chai.assert;
 var noop = function() {};
 

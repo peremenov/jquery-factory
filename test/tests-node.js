@@ -1,6 +1,7 @@
-var window = require('jsdom').jsdom('<div />').defaultView,
-		$ = require('jquery')(window),
-		factory = require('..')($);
+var JSDOM = require('jsdom').JSDOM;
+var window = new JSDOM('<div />').window;
+var $ = require('jquery')(window);
+var factory = require('..')($);
 
 var assert = require('chai').assert;
 

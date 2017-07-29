@@ -19,12 +19,13 @@ var pluginFunc = function($el, opt, old) {
     this.opt = opt;
     this.opt2 = opt2;
     this.opt3 = opt3;
-  }
+  };
 };
 
 var testEl = '#test';
 var testWDataEl = '#test-w-data';
-var testData = 'some useful data'; // the same as in HTML
+// the same as in HTML
+var testData = 'some useful data';
 
 var data = {
   pluginNameFactory: pluginNameFactory,

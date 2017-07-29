@@ -1,6 +1,6 @@
 {
   "name": "jquery-factory",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "homepage": "https://github.com/peremenov/jquery-factory",
   "description": "Super simple, lightweight and solid factory of jQuery plugins",
   "main": "dist/newPlugin.jquery.js",
